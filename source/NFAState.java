@@ -8,7 +8,7 @@ public class NFAState {
     /**
      * Indicates whether the state is accepting.
      */
-    private final boolean isAccepting;
+    private boolean isAccepting;
 
     /**
      * The outgoing transitions.
@@ -22,6 +22,14 @@ public class NFAState {
     public NFAState(boolean isAccepting) {
         this.isAccepting = isAccepting;
         this.transitions = new ArrayList<>();
+    }
+
+    /**
+     * Sets whether the state is accepting.
+     * @param isAccepting Indicates whether the state should be set as accepting.
+     */
+    public void setAccepting(boolean isAccepting) {
+        this.isAccepting = isAccepting;
     }
 
     /**
