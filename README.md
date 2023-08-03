@@ -1,19 +1,20 @@
 # RegexEngine
 
-A basic Java regular expression engine.
+A Java regular expression engine.
 
 ## Stages
 
 The engine works in the following stages:
 
-1. Use recursive-descent parsing to validate that the regex is valid
-2. Use the shunting-yard algorithm to convert the regex from infix to postfix notation
-3. Use Thompson's construction to build an epsilon-NFA from the postfix regex
-4. Use Thompson's algorithm to traverse the NFA for matching
-
-TODO: Add implicit concatenation operators before shunting-yard
+1. Use recursive-descent parsing to validate that the regex is valid.
+2. Preprocess the regex to add implicit concatenation operators.
+3. Use the shunting-yard algorithm to convert the regex from infix to postfix notation.
+4. Use Thompson's construction to build an epsilon-NFA from the postfix regex.
+5. Use Thompson's algorithm to traverse the NFA for matching.
 
 ## Regex Grammar
+
+The grammar for the regex language is shown below. This is a regex supports basic features.
 
 ```
 regex = expression
