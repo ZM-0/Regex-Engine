@@ -10,7 +10,7 @@ public class RegexPreprocessor {
     }
 
     /**
-     * Builds an NFA for the given preprocessed regex in postfix notation.
+     * Builds an NFA for the given preprocessed regex in postfix notation using Thompson's construction.
      * @param processedRegex A preprocessed regex in postfix notation.
      * @return The corresponding NFA.
      */
