@@ -1,7 +1,5 @@
 # RegexEngine
 
----
-
 A basic Java regular expression engine.
 
 ## Stages
