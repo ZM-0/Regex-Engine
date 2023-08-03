@@ -17,6 +17,7 @@ TODO: Add implicit concatenation operators before shunting-yard
 
 ## Regex Grammar
 
+```
 regex = expression
 
 expression = subexpression { “|” subexpression }
@@ -27,7 +28,7 @@ group = “(“ expression “)” [ quantifier ]
 
 match = ( character | character class ) [ quantifier ]
 
-quantifier = “+” | “*” | “?” | “{“ digit { digit } “,” digit { digit } “}” | “{“ “,” digit { digit } “}” | “{“ digit { digit } “,” “}”
+quantifier = “+” | “*” | “?” | “{“ [ digit { digit } ] “,” digit { digit } “}” | “{“ digit { digit } “,” “}”
 
 character class = “[“ character { character } “]”
 
@@ -40,4 +41,4 @@ letter = “a” | “b” | “c” | “d” | “e” | “f” | “g” | �
 digit = “0” | “1” | “2” | “3” | “4” | “5” | “6” | “7” | “8” | “9”
 
 whitespace = “ “ | “\t” | “\n”
-
+```
