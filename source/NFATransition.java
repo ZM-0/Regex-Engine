@@ -1,9 +1,9 @@
 /**
- * An epsilon or symbol transition in the NFA.
+ * An ε or symbol transition between NFA states.
  */
 public class NFATransition {
     /**
-     * Indicates whether the transition is a symbol or epsilon one.
+     * Indicates whether the transition is a symbol or ε one.
      */
     private final boolean isEpsilon;
 
@@ -36,7 +36,7 @@ public class NFATransition {
     }
 
     /**
-     * Creates an epsilon-transition between the given states.
+     * Creates an ε-transition between the given states.
      * @param start The start state.
      * @param end The end state.
      */

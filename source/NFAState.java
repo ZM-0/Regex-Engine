@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
- * A state in the epsilon-NFA.
+ * A state in an ε-NFA.
  */
 public class NFAState {
     /**
@@ -17,18 +16,12 @@ public class NFAState {
     private final List<NFATransition> transitions;
 
     /**
-     * A unique integer ID for the state.
-     */
-    private final int id;
-
-    /**
      * Creates a new state with no outgoing transitions.
      * @param isAccepting Indicates whether the state is accepting.
      */
     public NFAState(boolean isAccepting) {
         this.isAccepting = isAccepting;
         this.transitions = new ArrayList<>();
-        this.id = new Random().nextInt(100);
     }
 
     /**

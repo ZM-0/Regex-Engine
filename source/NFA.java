@@ -1,5 +1,5 @@
 /**
- * A non-deterministic finite-state automaton with epsilon and symbol transitions.
+ * A non-deterministic finite-state automaton with ε and symbol transitions.
  */
 public class NFA {
     /**
@@ -13,7 +13,7 @@ public class NFA {
     private NFAState end;
 
     /**
-     * Creates a two-state NFA to recognise the empty string (i.e. with a single epsilon-transition).
+     * Creates a two-state NFA to recognise the empty string (i.e. with a single ε-transition).
      */
     public NFA() {
         this.start = new NFAState(false);
@@ -46,13 +46,13 @@ public class NFA {
      * @param other The other NFA to be alternated with.
      */
     public void alternate(NFA other) {
-        // Link the new start to the NFAs with epsilon-transitions
+        // Link the new start to the NFAs with ε-transitions
         NFAState newStart = new NFAState(false);
 
         newStart.addTransition(new NFATransition(newStart, this.start));
         newStart.addTransition(new NFATransition(newStart, other.start));
 
-        // Link the NFAs to the new end with epsilon-transitions
+        // Link the NFAs to the new end with ε-transitions
         NFAState newEnd = new NFAState(true);
 
         this.end.setAccepting(false);
@@ -68,7 +68,7 @@ public class NFA {
     /**
      * Converts this NFA to a zero-or-many repetition of itself.
      */
-    public void repetition() {
+    public void repeat() {
         NFAState newStart = new NFAState(false);
         NFAState newEnd = new NFAState(true);
 

@@ -7,37 +7,54 @@ A Java regular expression engine.
 The engine works in the following stages:
 
 1. Use recursive-descent parsing to validate that the regex is valid.
-2. Preprocess the regex to add implicit concatenation operators.
-3. Use the shunting-yard algorithm to convert the regex from infix to postfix notation.
-4. Use Thompson's construction to build an epsilon-NFA from the postfix regex.
-5. Use Thompson's algorithm to traverse the NFA for matching.
+2. Build an NFA during parsing.
+3. Use Thompson's algorithm to traverse the NFA for matching.
+
+## Features
+
+- Alternation: "|"
+- Grouping: "(" ")"
+- Quantifiers: "+", "*", "?", "{n}", "{n,}", "{,m}", "{n,m}"
+- Wildcard: "."
+- Character classes: "[" "]"
+
+### Operator Precedence
+
+1. Escaping: \
+2. Grouping: (), [], . (wildcard)
+3. Quantifiers: +, *, ?, {n}, {n,}, {,m}, {n,m}
+4. Concatenation: .
+5. Alternation: |
 
 ## Regex Grammar
 
-The grammar for the regex language is shown below. This is a regex supports basic features.
+The grammar for the regex language is shown below.
 
 ```
-regex = expression
+Expression = Subexpression { “|” Subexpression }
 
-expression = subexpression { “|” subexpression }
+Subexpression = Item { Item }
 
-subexpression = ( match | group ) { match | group }
+Item = Match [ Quantifier ]
 
-group = “(“ expression “)” [ quantifier ]
+Match = Match Character | “(“ Expression “)” | “[“ Character Class “]” | “.”
 
-match = ( character | character class ) [ quantifier ]
+Quantifier = “+” | “*” | “?” | “{“ Number “,” [ Number ] “}” | “{“ [ Number ] “,” Number “}”
 
-quantifier = “+” | “*” | “?” | “{“ [ digit { digit } ] “,” digit { digit } “}” | “{“ digit { digit } “,” “}”
+Match Character = Non Meta Character | “\” Meta Character
 
-character class = “[“ character { character } “]”
+Character Class = Character { Character }
 
-character = letter | digit | whitespace | wildcard
+Character = Non Meta Character | Meta Character
 
-wildcard = “.”
+Non Meta Character = “a” | “b” | “c” | “d” | “e” | “f” | “g” | “h” | “i” | “j” | “k” | “l” | “m” | “n” | “o” | “p”
+                    | “q” | “r” | “s” | “t” | “u” | “v” | “w” | “x” | “y” | “z” | “A” | “B” | “C” | “D” | “E” | “F”
+                    | “G” | “H” | “I” | “J” | “K” | “L” | “M” | “N” | “O” | “P” | “Q” | “R” | “S” | “T” | “U” | “V”
+                    | “W” | “X” | “Y” | “Z”
 
-letter = “a” | “b” | “c” | “d” | “e” | “f” | “g” | “h” | “i” | “j” | “k” | “l” | “m” | “n” | “o” | “p” | “q” | “r” | “s” | “t” | “u” | “v” | “w” | “x” | “y” | “z” | “A” | “B” | “C” | “D” | “E” | “F” | “G” | “H” | “I” | “J” | “K” | “L” | “M” | “N” | “O” | “P” | “Q” | “R” | “S” | “T” | “U” | “V” | “X” | “X” | “Y” | “Z”
+Meta Character = “.” | “?” | “+” | “*” | “\” | “(“ | “)” | “[“ | “]” | “{“ | “}” | “|”
 
-digit = “0” | “1” | “2” | “3” | “4” | “5” | “6” | “7” | “8” | “9”
+Number = Digit { Digit }
 
-whitespace = “ “ | “\t” | “\n”
+Digit = “0” | “1” | “2” | “3” | “4” | “5” | “6” | “7” | “8” | “9”
 ```
