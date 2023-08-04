@@ -21,14 +21,6 @@ public class RDParser {
         this.position = 0;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new RDParser("gd|a(y+k)i").parse());
-        System.out.println(new RDParser("o+").parse());
-        System.out.println(new RDParser("b?q").parse());
-        System.out.println(new RDParser("(a|h)k").parse());
-        System.out.println(new RDParser("n+m").parse());
-    }
-
     /**
      * Parses the regex.
      * @return A compiled NFA of the regex.

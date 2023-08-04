@@ -39,4 +39,28 @@ public class NFATransition {
         this.end = end;
         this.symbol = symbol;
     }
+
+    /**
+     * Gets the end of the transition.
+     * @return The state at the end of the transition.
+     */
+    public NFAState getEnd() {
+        return this.end;
+    }
+
+    /**
+     * Gets the transition symbol.
+     * @return The transition symbol.
+     */
+    public char getSymbol() {
+        return this.symbol;
+    }
+
+    /**
+     * Checks if this transition is an epsilon-transition.
+     * @return True if this is an epsilon-transition, false otheriwise.
+     */
+    public boolean isEpsilon() {
+        return this.symbol == 'ε';
+    }
 }

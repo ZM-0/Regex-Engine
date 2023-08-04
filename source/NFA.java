@@ -5,12 +5,12 @@ public class NFA {
     /**
      * The start state of the NFA.
      */
-    private NFAState start;
+    private final NFAState start;
 
     /**
      * The accepting end state of the NFA.
      */
-    private NFAState end;
+    private final NFAState end;
 
     /**
      * Creates an NFA with a single epsilon transition.
@@ -39,6 +39,14 @@ public class NFA {
     private NFA(NFAState start, NFAState end) {
         this.start = start;
         this.end = end;
+    }
+
+    /**
+     * Gets the start state of the NFA.
+     * @return The start state.
+     */
+    public NFAState getStart() {
+        return this.start;
     }
 
     /**
