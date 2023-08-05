@@ -11,17 +11,11 @@ public class Regex {
     private final NFA nfa;
 
     /**
-     * The raw regex string.
-     */
-    private final String regex;
-
-    /**
      * Compiles the given regex for matching.
      * @param regex The regex string to be compiled.
      */
     public Regex(String regex) {
         this.nfa = new RDParser(regex).parse();
-        this.regex = regex;
     }
 
     /**

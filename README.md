@@ -2,6 +2,17 @@
 
 A Java regular expression engine.
 
+## Usage
+
+1. Clone the repository using ```git clone```.
+2. Run the match.bat file with the regex as the first argument and the word to match as the second.
+
+### Example
+
+```match "let'?s go+" "let's goooo"```
+
+```match "centre|center" "centre"```
+
 ## Features
 
 - Single character matching: ‘a’, ‘q’, etc.
