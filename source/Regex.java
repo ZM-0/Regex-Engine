@@ -24,17 +24,20 @@ public class Regex {
         this.regex = regex;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new Regex("a").match("a"));
-        System.out.println(new Regex("a").match("aa"));
-        System.out.println(new Regex("a").match("b"));
-        System.out.println(new Regex("ok?").match("o"));
-        System.out.println(new Regex("ok?").match("ok"));
-        System.out.println(new Regex("color|colour").match("color"));
-        System.out.println(new Regex("color|colour").match("colour"));
-        System.out.println(new Regex("color|colour").match("calaah"));
-        System.out.println(new Regex("bh+e").match("bhhhe"));
-        System.out.println(new Regex("q(f|e)+j?").match("qffeeefj"));
+    /**
+     * Entry-point method to use regex from command-line.
+     * @param arguments Command-line arguments.
+     */
+    public static void main(String[] arguments) {
+        if (arguments.length != 2) {
+            System.out.println("Invalid usage. Provide a regex and a word to match.");
+            return;
+        }
+
+        if (new Regex(arguments[0]).match(arguments[1]))
+            System.out.println("Regex: \"" + arguments[0] + "\" matches \"" + arguments[1] + "\"");
+        else
+            System.out.println("Regex: \"" + arguments[0] + "\" doesn't match \"" + arguments[1] + "\"");
     }
 
     /**
@@ -66,14 +69,9 @@ public class Regex {
         }
 
         // Check if the word is accepted by the NFA
-        for (NFAState state : currentStates) {
-            if (state.isAccepting()) {
-                System.out.println("\"" + this.regex + "\" matches \"" + word + "\"");
-                return true;
-            }
-        }
+        for (NFAState state : currentStates)
+            if (state.isAccepting()) return true;
 
-        System.out.println("\"" + this.regex + "\" doesn't match \"" + word + "\"");
         return false;
     }
 

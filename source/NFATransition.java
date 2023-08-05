@@ -15,7 +15,12 @@ public class NFATransition {
     /**
      * The transition symbol.
      */
-    private final char symbol;
+    private char symbol;
+
+    /**
+     * Indicates whether the transition is an epsilon-transition.
+     */
+    private final boolean isEpsilon;
 
     /**
      * Creates an epsilon-transition.
@@ -25,7 +30,7 @@ public class NFATransition {
     public NFATransition(NFAState start, NFAState end) {
         this.start = start;
         this.end = end;
-        this.symbol = 'ε';
+        this.isEpsilon = true;
     }
 
     /**
@@ -38,6 +43,7 @@ public class NFATransition {
         this.start = start;
         this.end = end;
         this.symbol = symbol;
+        this.isEpsilon = false;
     }
 
     /**
@@ -61,6 +67,6 @@ public class NFATransition {
      * @return True if this is an epsilon-transition, false otheriwise.
      */
     public boolean isEpsilon() {
-        return this.symbol == 'ε';
+        return this.isEpsilon;
     }
 }
