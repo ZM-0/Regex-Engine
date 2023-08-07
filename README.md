@@ -5,7 +5,8 @@ A Java regular expression engine.
 ## Usage
 
 1. Clone the repository using ```git clone```.
-2. Run the match.bat file with the regex as the first argument and the word to match as the second.
+2. Navigate to the cloned directory and run compile.bat.
+3. Run the match.bat file with the regex as the first argument and the word to match as the second.
 
 ### Examples
 
