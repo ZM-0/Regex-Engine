@@ -7,7 +7,7 @@ A Java regular expression engine.
 1. Clone the repository using ```git clone```.
 2. Run the match.bat file with the regex as the first argument and the word to match as the second.
 
-### Example
+### Examples
 
 ```match "let'?s go+" "let's goooo"```
 
